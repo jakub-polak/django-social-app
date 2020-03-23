@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'base.html' %}
+{% block head %}
     <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'accounts/style.css' %}" type="text/css">
-</head>
-<body>
-<div class="container">
-    <h1>Welcome!</h1>
-    Welcome! You can login here!<br>
-    <button class="btn btn-light">Login</button>
-</div>
-</body>
-</html>
+{% endblock %}
+
+{% block body %}
+    <h1>Welcome</h1>
+    <p>You can log in here!</p>
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+{% endblock %}
