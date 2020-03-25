@@ -16,6 +16,20 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/account/">Home</a>
             </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="nav-link" href="/account/profile">Profile</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/account/profile/edit">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/account/change-password/">Change Password</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/account/reset-password/">Reset Password</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
     <div class="mx-auto order-0">
@@ -26,9 +40,18 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/account/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/account/login">Login</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/account/register">Register</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

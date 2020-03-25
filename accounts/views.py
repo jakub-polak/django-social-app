@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
 
@@ -33,6 +34,7 @@ def register(request):
         return render(request, 'accounts/register.html', args)
 
 
+@login_required
 def view_profile(request):
     args = {
         'user': request.user,
@@ -40,6 +42,7 @@ def view_profile(request):
     return render(request, 'accounts/profile.html', args)
 
 
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
@@ -54,6 +57,7 @@ def edit_profile(request):
         return render(request, 'accounts/edit_profile.html', args)
 
 
+@login_required
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
