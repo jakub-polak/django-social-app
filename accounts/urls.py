@@ -8,11 +8,15 @@ from django.urls import path
 from accounts import views
 
 urlpatterns = [
-    path('', views.home),
+    path(
+        '',
+        views.home,
+        name='home'
+    ),
     path(
         'login/',
         LoginView.as_view(template_name='accounts/login.html'),
-        name='logout'
+        name='login'
     ),
     path(
         'logout/',
@@ -41,7 +45,7 @@ urlpatterns = [
     ),
     path(
         'reset-password/',
-        PasswordResetView.as_view(),
+        PasswordResetView.as_view(template_name='accounts/reset_password.html'),
         name='password_reset'
     ),
     path(

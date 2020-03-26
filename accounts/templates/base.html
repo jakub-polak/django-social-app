@@ -14,20 +14,20 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/account/">Home</a>
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item active">
-                <a class="nav-link" href="/account/profile">Profile</a>
+                <a class="nav-link" href="{% url 'view_profile' %}">Profile</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/account/profile/edit">Edit Profile</a>
+                <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/account/change-password/">Change Password</a>
+                <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/account/reset-password/">Reset Password</a>
+                <a class="nav-link" href="{% url 'password_reset' %}">Reset Password</a>
             </li>
             {% endif %}
         </ul>
@@ -42,14 +42,14 @@
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="/account/logout">Logout</a>
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="/account/login">Login</a>
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/account/register">Register</a>
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
             </li>
             {% endif %}
         </ul>
