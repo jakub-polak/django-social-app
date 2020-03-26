@@ -21,7 +21,6 @@ def home(request):
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-        print('POST')
         if form.is_valid():
             form.save()
             return redirect('/account')

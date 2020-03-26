@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'tutorial.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'tutorial.urls'
@@ -122,6 +123,10 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = '/account/'
+LOGIN_EXEMPT_URLS = [
+    'account/logout',
+    'account/register',
+]
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
