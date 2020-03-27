@@ -28,7 +28,7 @@ class LoginRequiredMiddleware:
     def process_view(self, request, view_func, view_args, view_kwargs):
         path = request.path_info.lstrip('/')
 
-        if path == reverse('logout').lstrip('/'):
+        if path == reverse('accounts:logout').lstrip('/'):
             logout(request)
 
         url_is_exempt = any(url.match(path) for url in EXTEMPT_URLS)

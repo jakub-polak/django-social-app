@@ -2,6 +2,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
+from django.urls import reverse
 
 from accounts.forms import RegistrationForm, EditProfileForm
 
@@ -23,7 +24,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/account')
+            return redirect(reverse('accounts:home'))
     else:
         form = RegistrationForm()
 
@@ -47,7 +48,7 @@ def edit_profile(request):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('/account/profile')
+            return redirect(reverse('accounts:view_profile'))
     else:
         form = EditProfileForm(instance=request.user)
         args = {
@@ -63,9 +64,9 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, user=form.user)
-            return redirect('/account/profile')
+            return redirect(reverse('accounts:view_profile'))
         else:
-            return redirect('/account/profile/change-password')
+            return redirect(reverse('accounts:change-password'))
     else:
         form = PasswordChangeForm(user=request.user)
         args = {

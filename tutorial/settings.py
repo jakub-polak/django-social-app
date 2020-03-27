@@ -124,7 +124,7 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = '/account/'
 LOGIN_EXEMPT_URLS = [
-    'account/logout',
+    'account/reset-password',
     'account/register',
 ]
 

@@ -14,21 +14,22 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-link" href="{% url 'accounts:home' %}">Home</a>
             </li>
             {% if user.is_authenticated %}
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'view_profile' %}">Profile</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'change_password' %}">Change Password</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'password_reset' %}">Reset Password</a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'accounts:view_profile' %}">Profile</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:change_password' %}">Change Password</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:password_reset' %}">Reset Password</a>
+                </li>
             {% endif %}
         </ul>
     </div>
@@ -41,16 +42,16 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+                </li>
             {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                </li>
             {% endif %}
         </ul>
     </div>
