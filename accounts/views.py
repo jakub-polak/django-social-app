@@ -7,18 +7,6 @@ from django.urls import reverse
 from accounts.forms import RegistrationForm, EditProfileForm
 
 
-def home(request):
-    numbers = range(6)
-    name = 'Mr Example'
-
-    args = {
-        'name': name,
-        'numbers': numbers,
-    }
-
-    return render(request, 'accounts/home.html', args)
-
-
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)

@@ -11,11 +11,6 @@ app_name = 'accounts'
 
 urlpatterns = [
     path(
-        '',
-        views.home,
-        name='home',
-    ),
-    path(
         'login/',
         LoginView.as_view(template_name='accounts/login.html'),
         name='login',
