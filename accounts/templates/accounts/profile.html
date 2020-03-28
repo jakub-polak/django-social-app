@@ -11,5 +11,10 @@
         <p>First name: {{ user.first_name }}</p>
         <p>Last name: {{ user.last_name }}</p>
         <p>Email: {{ user.email }}</p>
+        <p>Description: {{ user.userprofile.description }}</p>
+        <p>Website: {{ user.userprofile.website }}</p>
+        <p>City: {{ user.userprofile.city }}</p>
+        <p>Phone: {{ user.userprofile.phone }}</p>
+        <img src="{{ user.userprofile.image.url }}" width="240" alt="broken img">
     </div>
 {% endblock %}

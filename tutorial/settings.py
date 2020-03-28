@@ -120,12 +120,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'tutorial/media')
 
 LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = '/account/'
 LOGIN_EXEMPT_URLS = [
     'account/reset-password',
     'account/register',
+    'account/logout',
 ]
 
 EMAIL_HOST = 'localhost'
