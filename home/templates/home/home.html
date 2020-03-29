@@ -7,5 +7,15 @@
 {% block body %}
     <div class="container">
         <h1>Home</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.post }}
+            <button type="submit">Submit</button>
+        </form>
+
+    {% for post in posts %}
+        <h2>{{ post.post }}</h2>
+        <p>Posted by {{ post.user.get_full_name }} on {{ post.updated_date }}</p>
+    {% endfor %}
     </div>
 {% endblock %}
