@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
@@ -11,7 +12,8 @@ class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
         form = HomeForm()
         posts = Post.objects.all().order_by('-created_date')
-        return render(request, self.template_name, {'form': form, 'posts': posts})
+        users = User.objects.exclude(id=request.user.id)
+        return render(request, self.template_name, {'form': form, 'posts': posts, 'users': users})
 
     def post(self, request, *args, **kwargs):
         form = HomeForm(request.POST)

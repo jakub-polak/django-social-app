@@ -6,16 +6,27 @@
 
 {% block body %}
     <div class="container">
-        <h1>Home</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.post }}
-            <button type="submit">Submit</button>
-        </form>
-
-    {% for post in posts %}
-        <h2>{{ post.post }}</h2>
-        <p>Posted by {{ post.user.get_full_name }} on {{ post.updated_date }}</p>
-    {% endfor %}
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Home</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.post }}
+                    <button type="submit">Submit</button>
+                </form>
+                {% for post in posts %}
+                    <h2>{{ post.post }}</h2>
+                    <p>Posted by {{ post.user.get_full_name }} on {{ post.updated_date }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-md-4">
+                <h2>Other People</h2>
+                {% for user in users %}
+                    <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
+                        <h3>{{ user.username }}</h3>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

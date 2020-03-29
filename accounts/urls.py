@@ -31,6 +31,11 @@ urlpatterns = [
         name='view_profile',
     ),
     path(
+        'profile/<pk>/',
+        views.view_profile,
+        name='view_profile_with_pk',
+    ),
+    path(
         'profile/edit',
         views.edit_profile,
         name='edit_profile',

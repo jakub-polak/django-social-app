@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
 from django.urls import reverse
@@ -12,7 +13,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('accounts:home'))
+            return redirect(reverse('home:home'))
     else:
         form = RegistrationForm()
 
@@ -23,9 +24,11 @@ def register(request):
 
 
 @login_required
-def view_profile(request):
+def view_profile(request, pk=None, jajko=None):
+    if jajko:
+        print(f'JAJKO: {jajko}')
     args = {
-        'user': request.user,
+        'user': User.objects.get(pk=pk) if pk else request.user,
     }
     return render(request, 'accounts/profile.html', args)
 
