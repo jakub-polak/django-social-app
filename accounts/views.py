@@ -24,9 +24,7 @@ def register(request):
 
 
 @login_required
-def view_profile(request, pk=None, jajko=None):
-    if jajko:
-        print(f'JAJKO: {jajko}')
+def view_profile(request, pk=None):
     args = {
         'user': User.objects.get(pk=pk) if pk else request.user,
     }
