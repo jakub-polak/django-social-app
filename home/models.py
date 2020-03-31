@@ -11,7 +11,7 @@ class Post(models.Model):
 
 class Friend(models.Model):
     users = models.ManyToManyField(User)
-    current_user = models.ForeignKey(User, related_name='owner', on_delete=models.CASCADE, null=True)
+    current_user = models.ForeignKey(User, related_name='owner', null=True, on_delete=models.CASCADE)
 
     @classmethod
     def make_friend(cls, current_user, new_friend):

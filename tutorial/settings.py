@@ -125,7 +125,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tutorial/media')
 
 LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/account/'
+LOGIN_REDIRECT_URL = '/home/'
 LOGIN_EXEMPT_URLS = [
     'account/reset-password',
     'account/register',
