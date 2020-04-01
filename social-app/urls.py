@@ -1,4 +1,4 @@
-"""tutorial URL Configuration
+"""social-app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -17,7 +17,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from tutorial import views, settings
+from . import views, settings
 
 urlpatterns = [
     path('', views.login_redirect, name='login_redirect'),

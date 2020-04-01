@@ -3,4 +3,4 @@
 __pycache__/
 migrations
 db.sqlite3
-tutorial/media
+social-app/media

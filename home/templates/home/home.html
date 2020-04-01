@@ -26,7 +26,7 @@
                         <a href="{% url 'accounts:view_profile_with_pk' pk=user.pk %}">
                             <h3>{{ user.first_name }} {{ user.last_name }}</h3>
                         </a>
-                        <a href="{% url 'home:change_friends' operation='add' pk=user.pk %}">
+                        <a href="{% url 'home:follow' operation='follow' pk=user.pk %}">
                             <button type="button" class="btn btn-success">Add</button>
                         </a>
                     {% endif %}
@@ -36,7 +36,7 @@
                     <a href="{% url 'accounts:view_profile_with_pk' pk=friend.pk %}">
                         <h3>{{ friend.first_name }} {{ friend.last_name }}</h3>
                     </a>
-                    <a href="{% url 'home:change_friends' operation='remove' pk=friend.pk %}">
+                    <a href="{% url 'home:follow' operation='unfollow' pk=friend.pk %}">
                         <button type="button" class="btn btn-danger">Remove</button>
                     </a>
                 {% endfor %}

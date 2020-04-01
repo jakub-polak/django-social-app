@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
@@ -13,7 +14,10 @@ class HomeView(TemplateView):
         form = HomeForm()
         posts = Post.objects.all().order_by('-created_date')
         users = User.objects.exclude(id=request.user.id)
-        friends = Friend.objects.get(current_user=request.user).users.all()
+        try:
+            friends = Friend.objects.get(current_user=request.user).users.all()
+        except ObjectDoesNotExist:
+            friends = []
 
         return render(
             request,
@@ -35,10 +39,10 @@ class HomeView(TemplateView):
             return redirect('home:home')
 
 
-def change_friends(request, operation, pk):
+def change_follow_state(request, operation, pk):
     friend = User.objects.get(pk=pk)
-    if operation == 'add':
-        Friend.make_friend(request.user, friend)
-    elif operation == 'remove':
-        Friend.lose_friend(request.user, friend)
+    if operation == 'follow':
+        Friend.follow(request.user, friend)
+    elif operation == 'unfollow':
+        Friend.unfollow(request.user, friend)
     return redirect('home:home')

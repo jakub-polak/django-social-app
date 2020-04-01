@@ -6,5 +6,5 @@ app_name = 'home'
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
-    path('connect/<operation>/<pk>/', views.change_friends, name='change_friends'),
+    path('connect/<operation>/<pk>/', views.change_follow_state, name='follow'),
 ]
